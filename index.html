@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Smart Grocery Expiry Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Smart Grocery Expiry Tracker</h1>
+    <p>Track purchase & expiry dates — stay ahead of food waste.</p>
+  </header>
+
+  <div class="wrap">
+    <div class="card top">
+      <div class="add-box">
+        <input id="name" class="grow" type="text" placeholder="Item name (e.g., Milk)" />
+        <input id="qty" class="small" type="number" min="1" placeholder="Qty" />
+        <select id="category" class="small">
+          <option value="Other">Category</option>
+          <option>Vegetable</option>
+          <option>Fruit</option>
+          <option>Dairy</option>
+          <option>Meat</option>
+          <option>Frozen</option>
+          <option>Snack</option>
+        </select>
+        <input id="pdate" type="date" />
+        <input id="edate" type="date" />
+        <button id="addBtn">Add Item</button>
+
+        <div class="controls">
+          <input id="search" placeholder="Search items..." />
+          <select id="sort">
+            <option value="soon">Sort: Expiry soon</option>
+            <option value="late">Sort: Newest purchase</option>
+            <option value="name">Sort: Name</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters" style="width:100%; margin-top:10px;">
+        <button class="fbtn active" data-filter="all">All</button>
+        <button class="fbtn" data-filter="near">Near expiry (≤7d)</button>
+        <button class="fbtn" data-filter="expired">Expired</button>
+        <button class="fbtn" data-filter="consumed">Consumed</button>
+        <div style="margin-left:auto" class="export">
+          <button id="exportCSV">Export CSV</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">Total items: <span id="statTotal">0</span></div>
+        <div class="stat">Near expiry: <span id="statNear">0</span></div>
+        <div class="stat">Expired: <span id="statExpired">0</span></div>
+        <div class="stat">Consumed: <span id="statConsumed">0</span></div>
+      </div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="card empty" style="display:none;">No items yet. Add your groceries above.</div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
