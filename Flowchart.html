@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Lifecycle - Smart Grocery Expiry Tracker</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f7faff;
+        text-align: center;
+        padding: 30px;
+    }
+    h1 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .flowchart {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        position: relative;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .stage {
+        background: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        min-width: 140px;
+        text-align: center;
+        transition: transform 0.2s ease;
+    }
+    .stage:hover {
+        transform: scale(1.05);
+        background: #45a049;
+    }
+    .arrow {
+        width: 50px;
+        height: 2px;
+        background: #333;
+        align-self: center;
+    }
+    .tooltip {
+        display: none;
+        position: absolute;
+        background: white;
+        color: #333;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        max-width: 350px;
+        text-align: left;
+        z-index: 10;
+    }
+    .tooltip h3 {
+        margin-top: 0;
+        color: #4CAF50;
+    }
+    @media(max-width: 768px) {
+        .flowchart {
+            flex-direction: column;
+            align-items: center;
+        }
+        .arrow {
+            width: 2px;
+            height: 30px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>DevOps Lifecycle - Smart Grocery Expiry Tracker</h1>
+
+<div class="flowchart">
+    <div class="stage" data-title="Plan" data-info="Define features for grocery tracking and expiry management." data-code="Decided on input fields: name, quantity, category, purchase & expiry dates; filters, stats, CSV export.">1. Plan</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Code" data-info="Develop the HTML, CSS, and JS for adding, filtering, and displaying items." data-code="Created input forms, grid display, filters, stats counters, search and sort functionality in JavaScript.">2. Code</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Build" data-info="Integrate all files and ensure proper functionality." data-code="Linked style.css and script.js, verified IDs and classes for DOM manipulation.">3. Build</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Test" data-info="Check item addition, search, filters, sorting, and stats." data-code="Tested adding items, near-expiry and expired filters, CSV export, and edge cases.">4. Test</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Release" data-info="Prepare the tracker for deployment." data-code="Minified code, removed console logs, and ensured no JS errors.">5. Release</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Deploy" data-info="Make the app available for use." data-code="Uploaded project to GitHub Pages or Netlify. Checked responsiveness and mobile view.">6. Deploy</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Operate" data-info="Users start adding and tracking grocery items." data-code="Users input items, track expiry, filter items, and export data.">7. Operate</div>
+    <div class="arrow"></div>
+    <div class="stage" data-title="Monitor" data-info="Observe app performance and user interaction." data-code="Monitor stats counters, near-expiry notifications, and gather feedback for improvements.">8. Monitor</div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+    const stages = document.querySelectorAll(".stage");
+    const tooltip = document.getElementById("tooltip");
+
+    stages.forEach(stage => {
+        stage.addEventListener("click", (e) => {
+            tooltip.innerHTML = `
+                <h3>${stage.getAttribute("data-title")}</h3>
+                <p><strong>DevOps Meaning:</strong> ${stage.getAttribute("data-info")}</p>
+                <p><strong>In Project Code:</strong> ${stage.getAttribute("data-code")}</p>
+            `;
+            tooltip.style.display = "block";
+            tooltip.style.top = e.pageY + 10 + "px";
+            tooltip.style.left = e.pageX + 10 + "px";
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!e.target.classList.contains("stage")) {
+            tooltip.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>
